@@ -74,21 +74,17 @@ if method == 0:
 					for pwd in pwds:
 						t = threading.Thread(target=md5, args=(Hash, pwd))
 						t.start()
-						print("Try " + pwd, end="\r")
 					for pwd in pwds:
 						t = threading.Thread(target=nt(Hash, pwd))
 						t.start()
-						print("Try " + pwd, end="\r")
 					for pwd in pwds:
 						t = threading.Thread(target=lm(Hash, pwd))
 						t.start()
-						print("Try " + pwd, end="\r")
 				elif i.lower() == 'md4':
 					print("Try md4                                                        ")
 					for pwd in pwds:
 						t = threading.Thread(target=md4,  args=(Hash, pwd))
 						t.start()
-						print("Try " + pwd, end="\r")
 		elif 'sha512'.upper() in Type:
 			print("Hash found. It's sha512 or whirlpool.")
 			for i in Type:
@@ -97,26 +93,21 @@ if method == 0:
 					for pwd in pwds:
 						t = threading.Thread(target=sha512, args=(Hash, pwd))
 						t.start()
-						print("Try " + pwd, end="\r")
 				elif i.lower() == 'whirlpool':
 					print("Try whirlpool                                                        ")
 					for pwd in pwds:
 						t = threading.Thread(target=whirlpool,  args=(Hash, pwd))
 						t.start()
-						print("Try " + pwd, end="\r")
 		elif 'sha224'.upper() in Type:
 			print("Hash found. It's sha224")
 			print("Try sha224")
 			for pwd in pwds:
 				t = threading.Thread(target=sha224, args=(Hash, pwd))
 				t.start()
-				print("Try " + pwd, end="\r")
 		elif 'sha384'.upper() in Type:
 			print("Hash found. It's sha348")
 			for pwd in pwds:
-				t = threading.Thread(target=sha384, args=(Hash, pwd))
-				t.start()
-				print("Try " + pwd, end="\r")
+				t = threading.T
 		elif "unix".upper() in Type:
 			print("Hash found. It's a unix hash")
 			print("Getting salt of hash")
@@ -124,7 +115,6 @@ if method == 0:
 			for pwd in pwds:
 				t = threading.Thread(target=UNIX, args=(pwd, salt, Hash))
 				t.start()
-				print("Try " + pwd, end="\r")
 
 
 print('                                                                         ')
