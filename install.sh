@@ -15,3 +15,5 @@ sudo chmod +x /bin/hashpython
 sudo cp shadow2hashpython /bin/
 sudo chmod +x /bin/shadow2hashpython
 sudo cp shadow2hashpython.py /usr/share/hashpython/
+sudo cp unix.py /usr/share/hashpython/
+sudo cp ntlm.py /usr/share/hashpython/
