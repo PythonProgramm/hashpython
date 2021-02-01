@@ -47,7 +47,8 @@ try:
 		for i in hashfile.readlines():
 			if epoch >= 1:
 				break
-			Hash = i
+			Hash = i.strip("\n")
+			print("Found hash: " + Hash)
 except FileNotFoundError:
 	print(args.hashfile[0] + ": No such file or directory")
 	exit(3)
