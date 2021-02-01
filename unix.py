@@ -10,5 +10,5 @@ def UNIX(pwd, salt, HASH):
     print("Try " + pwd, end="\r")
     test_hash = crypt.crypt(pwd, salt)
     if test_hash == HASH:
-        print("[+] Found! " + pwd)
+        print(HASH + ":" + pwd)
         exit(0)
