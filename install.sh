@@ -1,5 +1,7 @@
 #! /bin/sh
 
+sudo pip3 install passlib # for ntlm and lm support
+
 sudo mkdir /usr/share/hashpython/
 sudo cp MD5.py /usr/share/hashpython/
 sudo cp MD4.py /usr/share/hashpython/
@@ -10,3 +12,6 @@ sudo cp main.py /usr/share/hashpython/
 sudo cp hashpython /bin/
 sudo cp hashid.py /usr/share/hashpython/
 sudo chmod +x /bin/hashpython
+sudo cp shadow2hashpython /bin/
+sudo chmod +x /bin/shadow2hashpython
+sudo cp shadow2hashpython.py /usr/share/hashpython/

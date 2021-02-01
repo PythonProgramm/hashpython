@@ -25,6 +25,8 @@ from MD5 import *
 from SHA512WHIRLPOOL import *
 from SHA224 import *
 from SHA384 import *
+from ntlm import *
+from unix import *
 
 # initial parser
 parser = ArgumentParser()
@@ -55,7 +57,7 @@ if method == 0:
 		print("Try to find type of hash")
 		Type = getId(Hash)
 		if 'md5'.upper() in Type:
-			print("Hash found. It's md5 or md4.")
+			print("Hash found. It's md5, md4, nt, lm")
 			for i in Type:
 				if i.lower() == 'md5':
 					print("Try md5")
@@ -63,9 +65,16 @@ if method == 0:
 						t = threading.Thread(target=md5, args=(Hash, pwd))
 						t.start()
 						print("Try " + pwd, end="\r")
+					for pwd in pwds:
+						t = threading.Thread(target=nt(Hash, pwd))
+						t.start()
+						print("Try " + pwd, end="\r")
+					for pwd in pwds:
+						t = threading.Thread(target=lm(Hash, pwd))
+						t.start()
+						print("Try " + pwd, end="\r")
 				elif i.lower() == 'md4':
 					print("Try md4                                                        ")
-
 					for pwd in pwds:
 						t = threading.Thread(target=md4,  args=(Hash, pwd))
 						t.start()
@@ -81,7 +90,6 @@ if method == 0:
 						print("Try " + pwd, end="\r")
 				elif i.lower() == 'whirlpool':
 					print("Try whirlpool                                                        ")
-
 					for pwd in pwds:
 						t = threading.Thread(target=whirlpool,  args=(Hash, pwd))
 						t.start()
@@ -89,18 +97,22 @@ if method == 0:
 		elif 'sha224'.upper() in Type:
 			print("Hash found. It's sha224")
 			print("Try sha224")
-
-
 			for pwd in pwds:
 				t = threading.Thread(target=sha224, args=(Hash, pwd))
 				t.start()
 				print("Try " + pwd, end="\r")
 		elif 'sha384'.upper() in Type:
 			print("Hash found. It's sha348")
-
-
 			for pwd in pwds:
 				t = threading.Thread(target=sha384, args=(Hash, pwd))
+				t.start()
+				print("Try " + pwd, end="\r")
+		elif "unix".upper() in Type:
+			print("Hash found. It's a unix hash")
+			print("Getting salt of hash")
+			salt = getSalt(Hash)
+			for pwd in pwds:
+				t = threading.Thread(target=UNIX, args=(pwd, salt, Hash))
 				t.start()
 				print("Try " + pwd, end="\r")
 

@@ -1,4 +1,4 @@
-def getId(HASH):
+def getId(HASH: str):
 	if len(HASH) == 32:
 		return ('MD5', 'MD4')
 	elif len(HASH) == 128:
@@ -11,3 +11,8 @@ def getId(HASH):
 		return ("SHA1")
 	elif len(HASH) == 56:
 		return ("SHA224")
+	elif "$" in HASH:
+		return ("UNIX")
+	else:
+		print("Unknown type of hash.")
+		exit(2)
