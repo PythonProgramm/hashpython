@@ -126,4 +126,4 @@ if method == 0:
 				print("Try " + pwd, end="\r")
 
 
-print('                                                                         ', end='')
+print('                                                                         ')
