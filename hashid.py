@@ -1,4 +1,4 @@
-def getId(HASH: str):
+def getId(HASH):
 	if len(HASH) == 32:
 		return ('MD5', 'MD4')
 	elif len(HASH) == 128:

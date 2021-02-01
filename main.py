@@ -1,5 +1,5 @@
 #set up the logo and version
-version = 1.0
+version = 1.3
 logo = """
 ############################################################################
 # _   _   _____   ____   _   _   __    _     _  _______    __   ___      _ #
@@ -32,16 +32,25 @@ from unix import *
 parser = ArgumentParser()
 
 # Set up arguments
-parser.add_argument('-H', '--hash', nargs=1, required=True, help="hash", dest='hash')
+parser.add_argument('-H', '--hash-file', nargs=1, required=True, help="hash file", dest='hashfile', type=str)
 parser.add_argument('-m', '--method', nargs=1, default=[0], type=int, help='the method. 0 for dictinary, 1 for brute force', dest='method')
 parser.add_argument('-r', '--range', nargs=2, dest='range', help='the the range for brute force')
 parser.add_argument('-w', '--wordlist', nargs=1, dest='wordlist', help='The wordlist')
 parser.add_argument('-t', '--type', nargs=1, dest='type', default=['auto'], help='type of hash')
 
 args =  parser.parse_args()
-
 method = args.method[0]
-Hash = args.hash[0]
+Hash = ""
+try:
+	with open(args.hashfile[0]) as hashfile:
+		epoch = 0
+		for i in hashfile.readlines():
+			if epoch >= 1:
+				break
+			Hash = i
+except FileNotFoundError:
+	print(args.hashfile[0] + ": No such file or directory")
+	exit(3)
 
 if method == 0:
 	if args.wordlist is None:
