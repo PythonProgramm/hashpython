@@ -7,7 +7,6 @@ def getSalt(HASH):
     return "$" + ctype + "$" + insalt + "$"
 
 def UNIX(pwd, salt, HASH):
-    print("Try " + pwd, end="\r")
     test_hash = crypt.crypt(pwd, salt)
     if test_hash == HASH:
         print(HASH + ":" + pwd)
