@@ -41,13 +41,14 @@ parser.add_argument('-t', '--type', nargs=1, dest='type', default=['auto'], help
 args =  parser.parse_args()
 method = args.method[0]
 hashes = set()
+print(logo)
 try:
 	with open(args.hashfile[0]) as hashfile:
 		found = 0
 		for i in hashfile.readlines():
 			hashes.add(i.strip("\n"))
 			found += 1
-	print("Loaded " + str(found) + "hashes")
+	print("Loaded " + str(found) + " hashes")
 	if found == 0:
 		print("Loaded 0 hashes")
 		exit(4)
@@ -61,7 +62,7 @@ for Hash in hashes:
 			print("USAGE:")
 			print('-w/ --wordlist WORDLIST -H/ --hash HASH')
 			exit(1)
-		print(logo)
+
 		pwds = set()
 		with open(args.wordlist[0]) as w:
 			for j in w:
