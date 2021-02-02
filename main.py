@@ -68,10 +68,8 @@ for Hash in hashes:
 			for j in w:
 				pwds.add(j.strip("\n"))
 		if args.type[0].upper() == 'AUTO':
-			print("Try to find type of hash")
 			Type = getId(Hash)
 			if 'md5'.upper() in Type:
-				print("Hash found. It's md5, md4, nt, lm")
 				for i in Type:
 					if i.lower() == 'md5':
 						print("Try md5")
@@ -85,12 +83,10 @@ for Hash in hashes:
 							t = threading.Thread(target=lm(Hash, pwd))
 							t.start()
 					elif i.lower() == 'md4':
-						print("Try md4                                                        ")
 						for pwd in pwds:
 							t = threading.Thread(target=md4,  args=(Hash, pwd))
 							t.start()
 			elif 'sha512'.upper() in Type:
-				print("Hash found. It's sha512 or whirlpool.")
 				for i in Type:
 					if i.lower() == 'sha512':
 						print("Try sha512")
@@ -103,22 +99,14 @@ for Hash in hashes:
 							t = threading.Thread(target=whirlpool,  args=(Hash, pwd))
 							t.start()
 			elif 'sha224'.upper() in Type:
-				print("Hash found. It's sha224")
-				print("Try sha224")
 				for pwd in pwds:
 					t = threading.Thread(target=sha224, args=(Hash, pwd))
 					t.start()
 			elif 'sha384'.upper() in Type:
-				print("Hash found. It's sha348")
 				for pwd in pwds:
 					t = threading.T
 			elif "unix".upper() in Type:
-				print("Hash found. It's a unix hash")
-				print("Getting salt of hash")
 				salt = getSalt(Hash)
 				for pwd in pwds:
 					t = threading.Thread(target=UNIX, args=(pwd, salt, Hash))
 					t.start()
-
-
-print('                                                                         ')
