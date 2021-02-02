@@ -47,7 +47,7 @@ try:
 		for i in hashfile.readlines():
 			hashes.add(i.strip("\n"))
 			found += 1
-	print("Loaded " + found + "hashes")
+	print("Loaded " + str(found) + "hashes")
 	if found == 0:
 		print("Loaded 0 hashes")
 		exit(4)
