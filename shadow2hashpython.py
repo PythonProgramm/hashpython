@@ -1,6 +1,6 @@
 false = ["*", "!", "x"]
 from sys import argv
-#import crypt
+
 
 def getShadow(file):
     pwd = ""
