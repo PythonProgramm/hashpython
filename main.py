@@ -72,7 +72,6 @@ for Hash in hashes:
 			if 'md5'.upper() in Type:
 				for i in Type:
 					if i.lower() == 'md5':
-						print("Try md5")
 						for pwd in pwds:
 							t = threading.Thread(target=md5, args=(Hash, pwd))
 							t.start()
