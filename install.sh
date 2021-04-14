@@ -1,6 +1,7 @@
 #! /bin/sh
 
 sudo pip3 install passlib # for ntlm and lm support
+sudo pip3 install numba # for gpu support
 
 sudo mkdir /usr/share/hashpython/
 sudo cp MD5.py /usr/share/hashpython/
