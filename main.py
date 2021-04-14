@@ -13,10 +13,7 @@ logo = """
 ############################################################################"""
 
 # Take imports of Threading, concurrent.future, argparse  and sys.argv
-import concurrent.futures
-import threading
 from argparse import ArgumentParser
-from sys import argv
 
 # Take imports of the other module of this project.
 from hashid import *
@@ -38,7 +35,7 @@ parser.add_argument('-r', '--range', nargs=2, dest='range', help='the the range 
 parser.add_argument('-w', '--wordlist', nargs=1, dest='wordlist', help='The wordlist')
 parser.add_argument('-t', '--type', nargs=1, dest='type', default=['auto'], help='type of hash')
 
-args =  parser.parse_args()
+args = parser.parse_args()
 method = args.method[0]
 hashes = set()
 print(logo)
@@ -73,39 +70,31 @@ for Hash in hashes:
 				for i in Type:
 					if i.lower() == 'md5':
 						for pwd in pwds:
-							t = threading.Thread(target=md5, args=(Hash, pwd))
-							t.start()
+							md5(Hash, pwd)
 						for pwd in pwds:
-							t = threading.Thread(target=nt(Hash, pwd))
-							t.start()
+							nt(Hash, pwd)
 						for pwd in pwds:
-							t = threading.Thread(target=lm(Hash, pwd))
-							t.start()
+							lm(Hash, pwd)
 					elif i.lower() == 'md4':
 						for pwd in pwds:
-							t = threading.Thread(target=md4,  args=(Hash, pwd))
-							t.start()
+							md4(Hash, pwd)
 			elif 'sha512'.upper() in Type:
 				for i in Type:
 					if i.lower() == 'sha512':
 						print("Try sha512")
 						for pwd in pwds:
-							t = threading.Thread(target=sha512, args=(Hash, pwd))
-							t.start()
+							sha512(Hash, pwd)
 					elif i.lower() == 'whirlpool':
 						print("Try whirlpool                                                        ")
 						for pwd in pwds:
-							t = threading.Thread(target=whirlpool,  args=(Hash, pwd))
-							t.start()
+							whirlpool(Hash, pwd)
 			elif 'sha224'.upper() in Type:
 				for pwd in pwds:
-					t = threading.Thread(target=sha224, args=(Hash, pwd))
-					t.start()
+					sha224(Hash, pwd)
 			elif 'sha384'.upper() in Type:
 				for pwd in pwds:
-					t = threading.T
+					sha384(Hash, pwd)
 			elif "unix".upper() in Type:
 				salt = getSalt(Hash)
 				for pwd in pwds:
-					t = threading.Thread(target=UNIX, args=(pwd, salt, Hash))
-					t.start()
+					UNIX(pwd, salt, Hash)
