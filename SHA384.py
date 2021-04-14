@@ -5,5 +5,5 @@ from numba import jit
 def sha384(HASH, password):
 	test_hash = hashlib.sha384(password).hexdigest()
 	if test_hash == HASH:
-		print(HASH + ':' + password)
+		print(HASH + ':' + password.decode())
 		exit()

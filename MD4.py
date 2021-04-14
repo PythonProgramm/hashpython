@@ -5,5 +5,5 @@ from numba import jit
 def md4(HASH, password):
 	test_hash = new('md4', password).hexdigest()
 	if test_hash ==  HASH:
-		print(HASH + ':' + password)
+		print(HASH + ':' + password.decode())
 		exit()

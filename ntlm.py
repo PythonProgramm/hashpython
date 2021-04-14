@@ -5,12 +5,12 @@ from numba import jit
 def nt(HASH, password):
     test_hash = nthash.hash(password.decode())
     if test_hash == HASH:
-        print(HASH + ':' + password)
+        print(HASH + ':' + password.decode())
         exit()
 
 @jit(forceobj=True)
 def lm(HASH, password):
     test_hash = lmhash.hash(password.decode())
     if test_hash == HASH:
-        print(HASH + ':' + password)
+        print(HASH + ':' + password.decode())
         exit()

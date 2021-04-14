@@ -12,5 +12,5 @@ from numba import jit
 def UNIX(pwd, salt, HASH):
     test_hash = crypt.crypt(pwd.decode(), salt)
     if test_hash == HASH:
-        print(HASH + ":" + pwd)
+        print(HASH + ":" + pwd.decode())
         exit(0)

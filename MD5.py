@@ -5,5 +5,5 @@ from numba import jit
 def md5(HASH, password):
 	test_hash = hashlib.md5(password).hexdigest()
 	if test_hash == HASH:
-		print(HASH + ':' + password)
+		print(HASH + ':' + password.decode())
 		exit()
