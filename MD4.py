@@ -1,6 +1,7 @@
 from hashlib import new
+from numba import jit
 
-
+@jit(forceobj=True)
 def md4(HASH, password):
 	test_hash = new('md4', password.encode()).hexdigest()
 	if test_hash ==  HASH:
