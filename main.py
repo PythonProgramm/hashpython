@@ -60,10 +60,9 @@ for Hash in hashes:
 			print('-w/ --wordlist WORDLIST -H/ --hash HASH')
 			exit(1)
 
-		pwds = set()
-		with open(args.wordlist[0]) as w:
-			for j in w:
-				pwds.add(j.strip("\n"))
+		
+		with open(args.wordlist[0], "rb") as w:
+			pwds = set(w.read().splitlines())
 		if args.type[0].upper() == 'AUTO':
 			Type = getId(Hash)
 			if 'md5'.upper() in Type:

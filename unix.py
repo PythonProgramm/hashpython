@@ -10,7 +10,7 @@ from numba import jit
 
 @jit(forceobj=True)
 def UNIX(pwd, salt, HASH):
-    test_hash = crypt.crypt(pwd, salt)
+    test_hash = crypt.crypt(pwd.decode(), salt)
     if test_hash == HASH:
         print(HASH + ":" + pwd)
         exit(0)
